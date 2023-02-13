@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class='main-container'>
+
+        <div class='container'>
+
+            <div class='left-sidebar'>
+
+                <h2>Dashboard</h2>
+
+                  <div>
+                    <a class='left-sidebar-links' href='http://localhost:4200'>HOME</a>
+
+                  </div>
+
+                <div>
+
+
+
+                    <a class='left-sidebar-links' href='http://localhost:4200/upload'>UPLOAD</a>
+
+                </div>
+
+                <div>
+                    <a class='left-sidebar-links' href='http://localhost:4200/plot'>VISUALIZE</a>
+                </div>
+                
+                <div>
+                    <a class='left-sidebar-links' href='http://localhost:4200/forecast'>FORECAST</a>
+                </div>
+
+              
+
+
+
+
+
+            </div>
+
+            <div class='dashboard'>
+                <div class="WEL">WELCOME {{username}}<br>{{time}} </div> 
+
+                <div class='top-bar'>
+                </div>
+
+                <h2>MARKET FORECASTING</h2>
+
+                <br>
+
+                <div class="rightbar">
+                    <div class="file">
+                        <p>Please upload the dataset for forecasting</p>
+                        
+                        <input type="file" (change)="getFile($event)"  accept=".csv" enctype="multipart/form-data" required ></div>
+                        <br>
+                        <br>
+                        <div class="number"><p>Choose the Timeline for Forecasting (Range - 0 to 12 in months )</p>
+                        <input type="number" (change)="getValue(timeline.value)" #timeline enctype="multipart/form-data" required><br /><br></div>
+                        
+                        <div>
+                                            <button class="log" (click)="submitData()"  >Upload</button>
+                                        </div> 
+                                        <br>
+                                        <br>
+                                        <div>
+                                            <p>Click here to navigate to next page</p>
+                                            <button class="log" (click)="nextpage()"  >Next</button>
+                                        </div> 
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
