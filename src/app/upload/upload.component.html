@@ -48,7 +48,7 @@
             </div>
 
             <div class='dashboard'>
-                <div class="WEL">WELCOME {{username}}<br>{{time}} </div> 
+               
 
                 <div class='top-bar'>
                 </div>
@@ -58,14 +58,16 @@
                 <br>
 
                 <div class="rightbar">
-                    <div class="file">
-                        <p>Please upload the dataset for forecasting</p>
-                        
-                        <input type="file" (change)="getFile($event)"  accept=".csv" enctype="multipart/form-data" required ></div>
+                    <label>STOCK NAME</label>
+                    <input type="name" [(ngModel)]="stock"><br>
+                   
+                        <label>START DATE</label>
+                        <input type="date" [(ngModel)]="sdate">
                         <br>
-                        <br>
-                        <div class="number"><p>Choose the Timeline for Forecasting (Range - 0 to 12 in months )</p>
-                        <input type="number" (change)="getValue(timeline.value)" #timeline enctype="multipart/form-data" required><br /><br></div>
+
+                       
+                        <label>END DATE</label>
+                        <input type="date" [(ngModel)]="edate">
                         
                         <div>
                                             <button class="log" (click)="submitData()"  >Upload</button>
@@ -76,7 +78,7 @@
                                             <p>Click here to navigate to next page</p>
                                             <button class="log" (click)="nextpage()"  >Next</button>
                                         </div> 
-                </div>
+                <div>
 
 
             </div>

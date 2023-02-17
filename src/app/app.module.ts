@@ -9,6 +9,7 @@ import { PlotComponent } from './plot/plot.component';
 import { ForecastComponent } from './forecast/forecast.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorComponent } from './error/error.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ErrorComponent } from './error/error.component';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [],

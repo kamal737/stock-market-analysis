@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
@@ -12,6 +13,9 @@ export class UploadComponent implements OnInit {
 
   username:any="";
   time:any;
+  stock:any="";
+  sdate:any="";
+  edate:any=""
 
   constructor(private router:Router,private http:HttpClient) { }
 
@@ -26,42 +30,26 @@ export class UploadComponent implements OnInit {
     });
     
   }
- name : string = "" 
- file: any;
- timeline:any
- data:any
 
 
 
-getValue(timeline:any)
-{
-  this.timeline= timeline;
-}
-
-getFile(event:any)
-{
-  this.file=event.target.files[0]
-  console.log(this.file)
-
-
-}
 
 
 submitData()
 {
   
   var  formData = new FormData();
-  formData.set("file",this.file)
-  formData.set("number",this.timeline)
-  console.log(this.timeline)
+  formData.set("stock",this.stock)
+  formData.set("sdate",this.sdate);
+  formData.set("edate",this.edate);
   this.http.post('http://localhost:5000/api/upload',formData, {responseType: 'text'}).subscribe((response)=>
   {
     console.log(response)
   });
-  window.alert("File Uploaded Successfully!")
+  window.alert("Data Uploaded Successfully!")
 }
 nextpage()
 {
-  this.router.navigate(["/visual"]);
+  this.router.navigate(["/plot"]);
 }
 }
