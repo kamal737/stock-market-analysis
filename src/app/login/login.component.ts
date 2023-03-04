@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Route,Router } from '@angular/router';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 
 @Component({
@@ -15,6 +15,10 @@ export class LoginComponent implements OnInit
   username:any=""
   password:any="";
   x:any;
+  gotp:any=""
+  lotp:any=""
+  json2:any;
+  result:any
 
   constructor(private route:Router,private http:HttpClient) { }
 
@@ -64,6 +68,35 @@ export class LoginComponent implements OnInit
       } else {
         this.x.type = "password";
       }
+    }
+
+    getOtp()
+    {
+      this.lotp = 0;
+      var digits = '0123456789';
+    
+      for(let i=0;i<6;i++)
+      {
+        this.lotp += digits[Math.floor(Math.random()*10)]
+      }
+      console.log(this.lotp);
+      window.alert("OTP SENT SUCCESSFULLY")
+      var  formData = new FormData();
+      formData.set("otp",this.lotp)
+      this.http.post('http://localhost:5000/api/otp',formData,{responseType:'json'}).subscribe((response)=>
+     {
+     
+        this.result = response
+        console.log(this.result)
+     })
+    //  (error:HttpErrorResponse)=>
+    //  {
+    //   this.result = error;
+    //   window.alert("Error Occured!Kindly ensure that the backend is running or the backend code has some issues")
+    //  })
+  
+      return this.lotp
+  
     }
 
 }
